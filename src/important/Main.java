@@ -20,6 +20,8 @@ public class Main extends Application {
      *  - It is optional to have both a one-player and two-player system, but it is required to have one of the two.
      */
 
+
+    //starts the program
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/files/intro.fxml"));

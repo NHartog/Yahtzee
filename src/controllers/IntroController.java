@@ -14,6 +14,7 @@ import java.io.IOException;
 
 public class IntroController extends ActionEvent {
 
+    //Intro screen initialization
     public void buttonClicked(MouseEvent m) throws IOException {
         System.out.println("clicked");
         Parent two = FXMLLoader.load(getClass().getResource("/files/afterIntro.fxml"));
@@ -24,6 +25,7 @@ public class IntroController extends ActionEvent {
         window.show();
     }
 
+    //button to send you to Yatzhee link with instuctions
     public void goToURL(MouseEvent mouseEvent) {
         HostServicesDelegate hostServices = HostServicesFactory.getInstance(new Application() {
             @Override

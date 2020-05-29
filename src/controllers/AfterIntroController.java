@@ -25,6 +25,7 @@ import java.util.Timer;
 
 public class AfterIntroController {
 
+    // @FXML instance variables
     @FXML public GridPane DiceGrid;
     @FXML public GridPane PlayerDice;
 
@@ -73,7 +74,7 @@ public class AfterIntroController {
     @FXML public Button plyls;
     @FXML public Button plyc;
 
-
+    //instance variables
     private int _num1s;
     private int _num2s;
     private int _num3s;
@@ -89,9 +90,14 @@ public class AfterIntroController {
 
     ArrayList<Integer> num = new ArrayList<Integer>();
     ArrayList<Integer> play = new ArrayList<Integer>();
+    ArrayList<ImageView> img = new ArrayList<ImageView>();
+    ArrayList<ImageView> obj = new ArrayList<ImageView>();
+    ImageView view = new ImageView();
 
     int dices = 0;
     int rolls = 0;
+
+    //"Constructor" initializes this pages
 
     public void initialize(){
 
@@ -105,10 +111,8 @@ public class AfterIntroController {
     }
 
 
-    ArrayList<ImageView> img = new ArrayList<ImageView>();
-    ArrayList<ImageView> obj = new ArrayList<ImageView>();
-    ImageView view = new ImageView();
 
+    //rolls the dice when you click the roll button and chooses what dice to show
     public void Roll(MouseEvent mouseEvent) {
        DiceGrid.getChildren().clear();
        num.clear();
@@ -157,6 +161,8 @@ public class AfterIntroController {
         check();
     }
 
+
+    //chooses your first dice
     public void take1(MouseEvent Event) {
         System.out.println("take1");
         PlayerDice.add(obj.get(0),dices,0);
@@ -167,7 +173,7 @@ public class AfterIntroController {
         System.out.println(play);
         check();
     }
-
+    //chooses your 2nd dice
     public void take2(MouseEvent mouseEvent) {
         System.out.println("take2");
         PlayerDice.add(obj.get(1),dices,0);
@@ -178,7 +184,7 @@ public class AfterIntroController {
         System.out.println(play);
         check();
     }
-
+    //chooses your 5th dice
     public void take5(MouseEvent mouseEvent) {
         System.out.println("take5");
         PlayerDice.add(obj.get(4),dices,0);
@@ -189,7 +195,7 @@ public class AfterIntroController {
         System.out.println(play);
         check();
     }
-
+    //chooses your 4th dice
     public void take4(MouseEvent mouseEvent) {
         System.out.println("take4");
         PlayerDice.add(obj.get(3),dices,0);
@@ -200,7 +206,7 @@ public class AfterIntroController {
         System.out.println(play);
         check();
     }
-
+    //chooses your 3rd dice
     public void take3(MouseEvent mouseEvent) {
         System.out.println("take3");
         PlayerDice.add(obj.get(2),dices,0);
@@ -212,6 +218,7 @@ public class AfterIntroController {
         check();
     }
 
+    //checks if you have rolled your dices
     public void check(){
         if(rolls == 3 || play.size() == 5){
             RollButt.setDisable(true);
@@ -235,7 +242,7 @@ public class AfterIntroController {
         checkFullHouse();
         checkLargeStraight();*/
     }
-
+    //checks for ones and returns the sum of ones
     public int checkOnes(){
         int oneSum = 0;
         for (int i = 0; i< play.size(); i++){
@@ -246,6 +253,8 @@ public class AfterIntroController {
 
         return oneSum;
     }
+
+    //checks for twos and returns sum of twos
     public int checkTwos(){
         int twoSum = 0;
         for (int i = 0; i< play.size(); i++){
@@ -257,6 +266,7 @@ public class AfterIntroController {
         return twoSum;
     }
 
+    //checks for threes and returns the sum of threes
     public int checkThree(){
         int threeSum = 0;
         for (int i = 0; i< play.size(); i++){
@@ -268,6 +278,7 @@ public class AfterIntroController {
         return threeSum;
     }
 
+    //checks for fours and returns the sum of fours
     public int checkFours(){
         int fourSum = 0;
         for (int i = 0; i< play.size(); i++){
@@ -279,6 +290,7 @@ public class AfterIntroController {
         return fourSum;
     }
 
+    //checks for fives and returns the sum of fives
     public int checkFives(){
         int fiveSum = 0;
         for (int i = 0; i< play.size(); i++){
@@ -290,6 +302,7 @@ public class AfterIntroController {
         return fiveSum;
     }
 
+    //checks for sixes and returns the sum of sixes
     public int checkSixes(){
         int sixSum = 0;
         for (int i = 0; i< play.size(); i++){
@@ -302,6 +315,7 @@ public class AfterIntroController {
         return sixSum;
     }
 
+    //checks for 3 of a kind and returns its value
     public int checktoak() {
         int Sum = 0;
 
@@ -329,6 +343,7 @@ public class AfterIntroController {
         return Sum;
     }
 
+    //checks 4 of a kind and returns its value
     public int checkfoak()
     {
         int Sum = 0;
@@ -357,6 +372,7 @@ public class AfterIntroController {
 
 
 
+    //checks for fullhouse and returns its value
     public int checkFullHouse(){
         int[] counts = new int[6];
         for (int i=0; i<play.size(); i++){
@@ -380,6 +396,7 @@ public class AfterIntroController {
         }
     }
 
+    //checks small straight and returns its value
     public int checkSmallStraight(){
         int counter = 0;
         int score = 0;
@@ -419,6 +436,7 @@ public class AfterIntroController {
         return score;
     }
 
+    //checks for large staright and returns its value
     public int checkLargeStraight(){
        Collections.sort(play);
         if(play.size() != 5){
@@ -447,6 +465,7 @@ public class AfterIntroController {
         }
     }
 
+    //gets the total selected for score
     public int checkC(){
        int sum = 0;
         for(int i = 0; i< play.size(); i++){
@@ -455,6 +474,7 @@ public class AfterIntroController {
         return sum;
     }
 
+    //adds score based on which move you made (selected ones, twos, full house ,etc)
     public void addOnes(MouseEvent mouseEvent) {
        _totalScore += checkOnes();
         Oneb.setFill(Color.BLACK);
@@ -563,6 +583,7 @@ public class AfterIntroController {
     }
 
 
+    //checks if you finsished the game
     public void next(){
         play.clear();
         DiceGrid.getChildren().clear();
